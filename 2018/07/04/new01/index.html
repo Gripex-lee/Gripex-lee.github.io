@@ -105,17 +105,17 @@
 <meta name="description" content="gitHub是开源软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名gitHub。2018年6月4日，微软宣布，通过75亿美元的股票交易收购代码托管平台GitHub。">
 <meta name="keywords" content="github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github文件push">
+<meta property="og:title" content="Github托管文件">
 <meta property="og:url" content="http://yoursite.com/2018/07/04/new01/index.html">
 <meta property="og:site_name" content="Gripex-lee&#39;s Blog">
 <meta property="og:description" content="gitHub是开源软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名gitHub。2018年6月4日，微软宣布，通过75亿美元的股票交易收购代码托管平台GitHub。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.dayin.la/attachment/thumb/2013-07/22/product_12862_800x600.jpg?_view=">
-<meta property="og:updated_time" content="2018-08-29T05:36:18.902Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/04/new01/timg.jpg">
+<meta property="og:updated_time" content="2018-08-29T06:34:57.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github文件push">
+<meta name="twitter:title" content="Github托管文件">
 <meta name="twitter:description" content="gitHub是开源软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名gitHub。2018年6月4日，微软宣布，通过75亿美元的股票交易收购代码托管平台GitHub。">
-<meta name="twitter:image" content="http://www.dayin.la/attachment/thumb/2013-07/22/product_12862_800x600.jpg?_view=">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/04/new01/timg.jpg">
 
 
 
@@ -151,7 +151,7 @@
 
 
 
-  <title>Github文件push | Gripex-lee's Blog</title>
+  <title>Github托管文件 | Gripex-lee's Blog</title>
   
 
 
@@ -297,7 +297,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Github文件push</h2>
+          <h2 class="post-title" itemprop="name headline">Github托管文件</h2>
         
 
         <div class="post-meta">
@@ -351,7 +351,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  235
+                  284
                 </span>
               
 
@@ -388,21 +388,20 @@
       
 
       
-        <p><img src="http://www.dayin.la/attachment/thumb/2013-07/22/product_12862_800x600.jpg?_view=" alt="Github"></p>
+        <p><img src="/2018/07/04/new01/timg.jpg" alt="Github"></p>
 <p>gitHub是开源软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名gitHub。<br>2018年6月4日，微软宣布，通过75亿美元的股票交易收购代码托管平台GitHub。<br><a id="more"></a></p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="1-下载git"><a href="#1-下载git" class="headerlink" title="1.下载git"></a>1.下载git</h4><pre><code>正常点的应用市场都可进行下载
+<p>Github的好处在于能为程序猿管理代码提供便捷的同时为世界各地的代码交流提供桥梁。下面是用Github管理代码的基本操作。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="1-下载git"><a href="#1-下载git" class="headerlink" title="1.下载git"></a>1.下载git</h4><pre><code>正常的软件管家都可进行下载
 </code></pre><h4 id="2-注册github"><a href="#2-注册github" class="headerlink" title="2.注册github"></a>2.注册github</h4><pre><code>登陆 https://github.com/ 进行注册
-</code></pre><h4 id="3-将git和GitHub连接起来"><a href="#3-将git和GitHub连接起来" class="headerlink" title="3.将git和GitHub连接起来"></a>3.将git和GitHub连接起来</h4><p>1) 获取ssh密匙 id_rsa.pub<br>2)github里，找到settings，填入密匙</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="1-确定git和GitHub已经连接："><a href="#1-确定git和GitHub已经连接：" class="headerlink" title="1.确定git和GitHub已经连接："></a>1.确定git和GitHub已经连接：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git remote add origin <span class="string">"github的连接地址"</span></span><br></pre></td></tr></table></figure>
-<p>注：如果出现already exists: </p>
+</code></pre><h4 id="3-将git和GitHub连接起来"><a href="#3-将git和GitHub连接起来" class="headerlink" title="3.将git和GitHub连接起来"></a>3.将git和GitHub连接起来</h4><p>1) 获取ssh密匙 id_rsa.pub<br>2)github里，找到<code>settings</code>，填入密匙</p>
+<h3 id="托管代码文件"><a href="#托管代码文件" class="headerlink" title="托管代码文件"></a>托管代码文件</h3><h4 id="1-确定git和GitHub已经连接："><a href="#1-确定git和GitHub已经连接：" class="headerlink" title="1.确定git和GitHub已经连接："></a>1.确定git和GitHub已经连接：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git remote add origin <span class="string">"github的连接地址"</span></span><br></pre></td></tr></table></figure>
+<p>注：如果出现<code>already exists</code>: </p>
 <pre><code class="bash">$ git remote rm origin
-</code></pre>
-<p>继续</p>
-<pre><code class="bash">$ git pull origin master
+$ git pull origin master
 </code></pre>
 <h4 id="2-将本地文件推到Github上"><a href="#2-将本地文件推到Github上" class="headerlink" title="2.将本地文件推到Github上"></a>2.将本地文件推到Github上</h4><pre><code class="bash">$ git add .
 </code></pre>
-<p>注：如果出现On branch master nothing to commit, working tree clean：依次输入</p>
+<p>注：如果出现<code>On branch master nothing to commit, working tree clean</code>：依次输入</p>
 <pre><code class="bash">$ git branch -b <span class="built_in">test</span>
 $ git branch -D master
 $ git fetch origin master
@@ -410,11 +409,10 @@ $ git chekcout master
 $ git add .
 $ git push origin master
 </code></pre>
-<p>接着</p>
 <pre><code class="bash">$ git commit -m <span class="string">'demo'</span>
 $ git push origin master
 </code></pre>
-<p>至此完成文件上推。</p>
+<p>至此完成文件托管。</p>
 
       
     </div>
@@ -593,7 +591,7 @@ $ git push origin master
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载git"><span class="nav-number">1.1.</span> <span class="nav-text">1.下载git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-注册github"><span class="nav-number">1.2.</span> <span class="nav-text">2.注册github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-将git和GitHub连接起来"><span class="nav-number">1.3.</span> <span class="nav-text">3.将git和GitHub连接起来</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-确定git和GitHub已经连接："><span class="nav-number">2.1.</span> <span class="nav-text">1.确定git和GitHub已经连接：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将本地文件推到Github上"><span class="nav-number">2.2.</span> <span class="nav-text">2.将本地文件推到Github上</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载git"><span class="nav-number">1.1.</span> <span class="nav-text">1.下载git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-注册github"><span class="nav-number">1.2.</span> <span class="nav-text">2.注册github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-将git和GitHub连接起来"><span class="nav-number">1.3.</span> <span class="nav-text">3.将git和GitHub连接起来</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#托管代码文件"><span class="nav-number">2.</span> <span class="nav-text">托管代码文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-确定git和GitHub已经连接："><span class="nav-number">2.1.</span> <span class="nav-text">1.确定git和GitHub已经连接：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将本地文件推到Github上"><span class="nav-number">2.2.</span> <span class="nav-text">2.将本地文件推到Github上</span></a></li></ol></li></ol></div>
             
 
           </div>
