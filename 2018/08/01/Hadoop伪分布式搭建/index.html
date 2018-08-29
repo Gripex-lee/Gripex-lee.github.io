@@ -91,7 +91,7 @@
 
 
 
-  <meta name="keywords" content="Hadoop," />
+  <meta name="keywords" content="Hadoop,伪分布,WordCount," />
 
 
 
@@ -102,21 +102,21 @@
 
 
 
-<meta name="description" content="Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过hadoop实现。">
-<meta name="keywords" content="Hadoop">
+<meta name="description" content="Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过Hadoop实现。">
+<meta name="keywords" content="Hadoop,伪分布,WordCount">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop 伪分布式下的 wordcount 示例">
 <meta property="og:url" content="http://yoursite.com/2018/08/01/Hadoop伪分布式搭建/index.html">
 <meta property="og:site_name" content="Gripex-lee&#39;s Blog">
-<meta property="og:description" content="Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过hadoop实现。">
+<meta property="og:description" content="Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过Hadoop实现。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/Hadoop伪分布式搭建/hadoop.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/Hadoop伪分布式搭建/hadoop.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/01/Hadoop伪分布式搭建/mapreduce.png">
-<meta property="og:updated_time" content="2018-08-29T06:40:04.126Z">
+<meta property="og:updated_time" content="2018-08-29T07:06:22.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 伪分布式下的 wordcount 示例">
-<meta name="twitter:description" content="Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过hadoop实现。">
+<meta name="twitter:description" content="Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过Hadoop实现。">
 <meta name="twitter:image" content="http://yoursite.com/2018/08/01/Hadoop伪分布式搭建/hadoop.jpg">
 
 
@@ -353,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  464
+                  461
                 </span>
               
 
@@ -390,20 +390,37 @@
       
 
       
-        <p><img src="/2018/08/01/Hadoop伪分布式搭建/hadoop.jpg" alt="hadoop"><br>Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果R，python处理不了的大数据可以通过hadoop实现。<br><a id="more"></a></p>
+        <p><img src="/2018/08/01/Hadoop伪分布式搭建/hadoop.jpg" alt="hadoop"><br><strong>Hadoop</strong>是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。数据处理中如果<code>R</code>，<code>python</code>处理不了的大数据可以通过Hadoop实现。<br><a id="more"></a></p>
 <h3 id="首先安装虚拟机并配置Hadoop"><a href="#首先安装虚拟机并配置Hadoop" class="headerlink" title="首先安装虚拟机并配置Hadoop"></a>首先安装虚拟机并配置Hadoop</h3><p><a href="https://www.toutiao.com/a6558402434790588936/" target="_blank" rel="noopener">安装虚拟机VMware Workstation Pro</a><br><a href="https://www.toutiao.com/a6566458468625023496/" target="_blank" rel="noopener">手把手教你在VMware虚拟机中安装Ubuntu14.04系统</a><br><a href="https://www.cnblogs.com/sench/p/8542175.html" target="_blank" rel="noopener">Ubuntu16.04下Hadoop的本地安装与配置</a></p>
-<h3 id="cd至hadoop的安装路径，并开启namenode和datanode"><a href="#cd至hadoop的安装路径，并开启namenode和datanode" class="headerlink" title="cd至hadoop的安装路径，并开启namenode和datanode"></a>cd至hadoop的安装路径，并开启namenode和datanode</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sbin/start-dfs.sh</span><br></pre></td></tr></table></figure>
-<p>输入’jps’后出现以下情况:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lee@lee-virtual-machine:~/usr/local/hadoop$ jps</span><br><span class="line">4678 SecondaryNameNode</span><br><span class="line">4247 NameNode</span><br><span class="line">4798 Jps</span><br><span class="line">4414 DataNode</span><br></pre></td></tr></table></figure></p>
+<h3 id="cd至hadoop的安装路径，并开启namenode和datanode"><a href="#cd至hadoop的安装路径，并开启namenode和datanode" class="headerlink" title="cd至hadoop的安装路径，并开启namenode和datanode"></a><code>cd</code>至hadoop的安装路径，并开启<code>namenode</code>和<code>datanode</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sbin/start-dfs.sh</span><br></pre></td></tr></table></figure>
+<p>输入<code>jps</code>后出现以下情况:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lee@lee-virtual-machine:~/usr/local/hadoop$ jps</span><br><span class="line">4678 SecondaryNameNode</span><br><span class="line">4247 NameNode</span><br><span class="line">4798 Jps</span><br><span class="line">4414 DataNode</span><br></pre></td></tr></table></figure></p>
 <h3 id="启动资源管理器"><a href="#启动资源管理器" class="headerlink" title="启动资源管理器"></a>启动资源管理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sbin/start-yarn.sh</span><br></pre></td></tr></table></figure>
 <p>出现以下情况为正常:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lee@lee-virtual-machine:~/usr/local/hadoop$ jps</span><br><span class="line">5348 Jps</span><br><span class="line">4852 ResourceManager</span><br><span class="line">4678 SecondaryNameNode</span><br><span class="line">4247 NameNode</span><br><span class="line">5015 NodeManager</span><br><span class="line">4414 DataNode</span><br></pre></td></tr></table></figure></p>
-<h3 id="运行wordcount示例"><a href="#运行wordcount示例" class="headerlink" title="运行wordcount示例"></a>运行wordcount示例</h3><h4 id="HDFS命令"><a href="#HDFS命令" class="headerlink" title="HDFS命令"></a>HDFS命令</h4><p>新建文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -mkdir /user</span><br><span class="line">$ hadoop fs -mkdir /user/root</span><br></pre></td></tr></table></figure></p>
-<p>查看文件夹权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -ls -d /user/root</span><br></pre></td></tr></table></figure></p>
+<h3 id="运行-wordcount示例"><a href="#运行-wordcount示例" class="headerlink" title="运行 wordcount示例"></a>运行 wordcount示例</h3><ul>
+<li><p>新建文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -mkdir /user</span><br><span class="line">$ hadoop fs -mkdir /user/root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件夹权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -ls -d /user/root</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>在<a href="http://localhost:8088/cluster" target="_blank" rel="noopener">http://localhost:8088/cluster</a>访问集群资源管理器，如图：<br><img src="/2018/08/01/Hadoop伪分布式搭建/hadoop.png" alt="集群资源管理器"></p>
-<p>新建一个txt文件（路径为/home/lee/usr/local/file/），内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">hello tom</span><br><span class="line">hello jake</span><br><span class="line">fuck tom</span><br></pre></td></tr></table></figure></p>
-<p>上传文件到客户端机器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -put /home/lee/usr/<span class="built_in">local</span>/file/test.txt /user/root/test.txt</span><br></pre></td></tr></table></figure></p>
-<p>找到MapReduce Examples的jar包（路径为/home/lee/usr/local/），并运行单词计数任务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop jar /home/lee/usr/<span class="built_in">local</span>/hadoop-mapreduce-examples-2.9.1.jar wordcount /user/root/test.txt /user/root/test_out</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>新建一个<code>txt</code>文件（路径为/home/lee/usr/local/file/），内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">hello tom</span><br><span class="line">hello jake</span><br><span class="line">fuck tom</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传文件到客户端机器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -put /home/lee/usr/<span class="built_in">local</span>/file/test.txt /user/root/test.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到<code>MapReduce Examples</code>的jar包（路径为/home/lee/usr/local/），并运行单词计数任务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop jar /home/lee/usr/<span class="built_in">local</span>/hadoop-mapreduce-examples-2.9.1.jar wordcount /user/root/test.txt /user/root/test_out</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>部分运行结果：<br><img src="/2018/08/01/Hadoop伪分布式搭建/mapreduce.png" alt="mapreduce部分结果"></p>
-<p>查看结果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -cat /user/root/test_out/part-r-00000</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>查看结果<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop fs -cat /user/root/test_out/part-r-00000</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fuck	1</span><br><span class="line">hello	3</span><br><span class="line">jake	1</span><br><span class="line">tom	2</span><br><span class="line">world	1</span><br></pre></td></tr></table></figure>
 <h3 id="任务结束，停止HDFS和YARN"><a href="#任务结束，停止HDFS和YARN" class="headerlink" title="任务结束，停止HDFS和YARN"></a>任务结束，停止HDFS和YARN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sbin/stop-dfs.sh</span><br><span class="line">$ sbin/stop-yarn.sh</span><br></pre></td></tr></table></figure>
 <h4 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h4><p><a href="https://www.cnblogs.com/bookwed/p/5896619.html" target="_blank" rel="noopener">linux下安装mysql</a><br><a href="https://jingyan.baidu.com/article/9158e0001b8a8fa2541228a0.html" target="_blank" rel="noopener">VMWare如何实现主机与虚拟机的文件共享与传输</a></p>
@@ -435,6 +452,10 @@
         <div class="post-tags">
           
             <a href="/tags/Hadoop/" rel="tag"><i class="fa fa-tag"></i> Hadoop</a>
+          
+            <a href="/tags/伪分布/" rel="tag"><i class="fa fa-tag"></i> 伪分布</a>
+          
+            <a href="/tags/WordCount/" rel="tag"><i class="fa fa-tag"></i> WordCount</a>
           
         </div>
       
@@ -552,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -585,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先安装虚拟机并配置Hadoop"><span class="nav-number">1.</span> <span class="nav-text">首先安装虚拟机并配置Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd至hadoop的安装路径，并开启namenode和datanode"><span class="nav-number">2.</span> <span class="nav-text">cd至hadoop的安装路径，并开启namenode和datanode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动资源管理器"><span class="nav-number">3.</span> <span class="nav-text">启动资源管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行wordcount示例"><span class="nav-number">4.</span> <span class="nav-text">运行wordcount示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HDFS命令"><span class="nav-number">4.1.</span> <span class="nav-text">HDFS命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务结束，停止HDFS和YARN"><span class="nav-number">5.</span> <span class="nav-text">任务结束，停止HDFS和YARN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐网站"><span class="nav-number">5.1.</span> <span class="nav-text">推荐网站</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先安装虚拟机并配置Hadoop"><span class="nav-number">1.</span> <span class="nav-text">首先安装虚拟机并配置Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd至hadoop的安装路径，并开启namenode和datanode"><span class="nav-number">2.</span> <span class="nav-text">cd至hadoop的安装路径，并开启namenode和datanode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动资源管理器"><span class="nav-number">3.</span> <span class="nav-text">启动资源管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-wordcount示例"><span class="nav-number">4.</span> <span class="nav-text">运行 wordcount示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务结束，停止HDFS和YARN"><span class="nav-number">5.</span> <span class="nav-text">任务结束，停止HDFS和YARN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐网站"><span class="nav-number">5.1.</span> <span class="nav-text">推荐网站</span></a></li></ol></li></ol></div>
             
 
           </div>

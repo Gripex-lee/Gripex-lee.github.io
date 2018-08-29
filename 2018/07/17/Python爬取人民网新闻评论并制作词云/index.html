@@ -91,7 +91,7 @@
 
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="python,词云," />
 
 
 
@@ -103,7 +103,7 @@
 
 
 <meta name="description" content="目标网址紧紧抓住大有可为的历史机遇期">
-<meta name="keywords" content="python">
+<meta name="keywords" content="python,词云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬取人民网新闻评论并制作词云">
 <meta property="og:url" content="http://yoursite.com/2018/07/17/Python爬取人民网新闻评论并制作词云/index.html">
@@ -112,7 +112,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/17/Python爬取人民网新闻评论并制作词云/renmin.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/17/Python爬取人民网新闻评论并制作词云/wordcloud.png">
-<meta property="og:updated_time" content="2018-08-29T06:16:54.155Z">
+<meta property="og:updated_time" content="2018-08-29T07:10:57.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬取人民网新闻评论并制作词云">
 <meta name="twitter:description" content="目标网址紧紧抓住大有可为的历史机遇期">
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  470
+                  461
                 </span>
               
 
@@ -390,11 +390,16 @@
 
       
         <p><img src="/2018/07/17/Python爬取人民网新闻评论并制作词云/renmin.jpg" alt="comments"></p>
-<h2 id="目标网址"><a href="#目标网址" class="headerlink" title="目标网址"></a>目标网址</h2><p><a href="http://bbs1.people.com.cn/post/129/0/0/166006014_1.html#replyList" target="_blank" rel="noopener">紧紧抓住大有可为的历史机遇期</a><br><a id="more"></a></p>
-<h2 id="简单源代码"><a href="#简单源代码" class="headerlink" title="简单源代码"></a>简单源代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import wordcloud</span><br><span class="line">import jieba</span><br><span class="line"></span><br><span class="line">content = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1,5):</span><br><span class="line">    url = <span class="string">'http://bbs1.people.com.cn/post/129/0/0/166006014_'</span>+str(i)+<span class="string">'.html#replyList'</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">    <span class="string">'Host'</span>: <span class="string">'bbs1.people.com.cn'</span>,</span><br><span class="line">    <span class="string">'upgrade-insecure-requests'</span>: <span class="string">'1'</span>,</span><br><span class="line">    <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.7 Safari/537.36'</span></span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.get(url,headers = headers) </span><br><span class="line">    response.encoding = <span class="string">'utf-8'</span> </span><br><span class="line">    text = response.text </span><br><span class="line">    txts = re.findall(r<span class="string">'&lt;a class="treeReply" target="_blank".*?&gt;\r\n\t\t\t\t\t\t(.*?)\t\t\t\t\t&lt;/a&gt;'</span>,text,re.S)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(txts)):</span><br><span class="line">        content.append(txts[j])</span><br><span class="line"></span><br><span class="line">txt = <span class="string">','</span>.join(content)</span><br><span class="line">w = wordcloud.WordCloud( width=1500,font_path=<span class="string">"msyh.ttc"</span>,height=1050) <span class="comment">#宽度，字体和高度</span></span><br><span class="line">w.generate(<span class="string">" "</span>.join(jieba.lcut(txt)))</span><br><span class="line">w.to_file(<span class="string">"pywcloud.png"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="代码及简单解析"><a href="#代码及简单解析" class="headerlink" title="代码及简单解析"></a>代码及简单解析</h2><p>导入要使用的开源库.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import wordcloud</span><br><span class="line">import jieba</span><br></pre></td></tr></table></figure></p>
-<p>新建列表content用来存储所有评论.</p>
+<h3 id="目标网址"><a href="#目标网址" class="headerlink" title="目标网址"></a>目标网址</h3><p><a href="http://bbs1.people.com.cn/post/129/0/0/166006014_1.html#replyList" target="_blank" rel="noopener">紧紧抓住大有可为的历史机遇期</a><br><a id="more"></a></p>
+<h3 id="简单源代码"><a href="#简单源代码" class="headerlink" title="简单源代码"></a>简单源代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import wordcloud</span><br><span class="line">import jieba</span><br><span class="line"></span><br><span class="line">content = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1,5):</span><br><span class="line">    url = <span class="string">'http://bbs1.people.com.cn/post/129/0/0/166006014_'</span>+str(i)+<span class="string">'.html#replyList'</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">    <span class="string">'Host'</span>: <span class="string">'bbs1.people.com.cn'</span>,</span><br><span class="line">    <span class="string">'upgrade-insecure-requests'</span>: <span class="string">'1'</span>,</span><br><span class="line">    <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.7 Safari/537.36'</span></span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.get(url,headers = headers) </span><br><span class="line">    response.encoding = <span class="string">'utf-8'</span> </span><br><span class="line">    text = response.text </span><br><span class="line">    txts = re.findall(r<span class="string">'&lt;a class="treeReply" target="_blank".*?&gt;\r\n\t\t\t\t\t\t(.*?)\t\t\t\t\t&lt;/a&gt;'</span>,text,re.S)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(txts)):</span><br><span class="line">        content.append(txts[j])</span><br><span class="line"></span><br><span class="line">txt = <span class="string">','</span>.join(content)</span><br><span class="line">w = wordcloud.WordCloud( width=1500,font_path=<span class="string">"msyh.ttc"</span>,height=1050) <span class="comment">#宽度，字体和高度</span></span><br><span class="line">w.generate(<span class="string">" "</span>.join(jieba.lcut(txt)))</span><br><span class="line">w.to_file(<span class="string">"pywcloud.png"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="代码及简单解析"><a href="#代码及简单解析" class="headerlink" title="代码及简单解析"></a>代码及简单解析</h3><ul>
+<li><p>导入要使用的开源库.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import wordcloud</span><br><span class="line">import jieba</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建列表<em>content</em>用来存储所有评论.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content = []</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>观察网站了解到评论总共4页，只需要简单的改动网址即可：</p>
 <pre><code class="bash"><span class="keyword">for</span> i <span class="keyword">in</span> range(1,5):
     url = <span class="string">'http://bbs1.people.com.cn/post/129/0/0/166006014_'</span>+str(i)+<span class="string">'.html#replyList'</span>
@@ -410,15 +415,15 @@
     <span class="keyword">for</span> j <span class="keyword">in</span> range(len(txts)):
         content.append(txts[j])
 </code></pre>
-<p>通过在content列表中添加“逗号”将评论连接起来得到txt，方便进行词云的制作.</p>
+<p>通过在<em>content</em>列表中添加“逗号”将评论连接起来得到<code>txt</code>，方便进行词云的制作.</p>
 <pre><code class="bash">txt = <span class="string">','</span>.join(content)
 </code></pre>
-<p>设置字体以及图片的宽度和高度，通过jieba库的lcut()函数将txt做分词处理，并输出图片“pywcloud.png”.</p>
+<p>设置字体以及图片的宽度和高度，通过<code>jieba</code>库的<code>lcut()</code>函数将<code>txt</code>做分词处理，并输出图片 <em>pywcloud.png</em>.</p>
 <pre><code class="bash">w = wordcloud.WordCloud( width=1500,font_path=<span class="string">"msyh.ttc"</span>,height=1050) <span class="comment">#宽度，字体和高度</span>
 w.generate(<span class="string">" "</span>.join(jieba.lcut(txt)))
 w.to_file(<span class="string">"pywcloud.png"</span>)
 </code></pre>
-<p>最终得到如图所示的词云图：<br><img src="/2018/07/17/Python爬取人民网新闻评论并制作词云/wordcloud.png" alt="词云图"></p>
+<h3 id="词云图"><a href="#词云图" class="headerlink" title="词云图"></a>词云图</h3><p><img src="/2018/07/17/Python爬取人民网新闻评论并制作词云/wordcloud.png" alt="词云图"></p>
 <p>finish！</p>
 
       
@@ -448,6 +453,8 @@ w.to_file(<span class="string">"pywcloud.png"</span>)
         <div class="post-tags">
           
             <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/词云/" rel="tag"><i class="fa fa-tag"></i> 词云</a>
           
         </div>
       
@@ -569,7 +576,7 @@ w.to_file(<span class="string">"pywcloud.png"</span>)
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -602,7 +609,7 @@ w.to_file(<span class="string">"pywcloud.png"</span>)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标网址"><span class="nav-number">1.</span> <span class="nav-text">目标网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单源代码"><span class="nav-number">2.</span> <span class="nav-text">简单源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码及简单解析"><span class="nav-number">3.</span> <span class="nav-text">代码及简单解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标网址"><span class="nav-number">1.</span> <span class="nav-text">目标网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单源代码"><span class="nav-number">2.</span> <span class="nav-text">简单源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码及简单解析"><span class="nav-number">3.</span> <span class="nav-text">代码及简单解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词云图"><span class="nav-number">4.</span> <span class="nav-text">词云图</span></a></li></ol></div>
             
 
           </div>
