@@ -127,7 +127,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/29/重庆二手房价影响因素/R1.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/29/重庆二手房价影响因素/summary.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/29/重庆二手房价影响因素/R2.png">
-<meta property="og:updated_time" content="2018-09-06T02:14:54.300Z">
+<meta property="og:updated_time" content="2018-09-25T06:57:20.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重庆二手房房价影响因素">
 <meta name="twitter:description" content="当城市规模发展到一定程度之后，城市建设将会由外延式拓展逐渐让位于内涵式的更新、改造和保护。这意味着受城市土地资源的限制,新建房数量会逐步减少，而存量房的保有量将会越来越大，此时房地产市场的交易重心必然会从新房转移到二手房上来。本次试验通过对链家重庆二手房公开数据的统计分析，研究影响重庆二手房房价的影响，为二手房定价提供理论依据。">
@@ -435,7 +435,7 @@
 </div></div></p>
 <p>修改后的<code>data</code>如下,其中有几个变量含有缺失值<br><img src="/2018/08/29/重庆二手房价影响因素/data.png" alt="data"></p>
 <h3 id="查看缺失值"><a href="#查看缺失值" class="headerlink" title="查看缺失值"></a>查看缺失值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md.pattern(data)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/08/29/重庆二手房价影响因素/queshi.png" alt="queshi">从中可以了解到<code>bulid_year</code>缺失328个，<code>elector</code>缺失517个，<code>type</code>缺失942个。<code>build_year</code>和<code>elector</code>的缺失值较少，所以不打算删除这两个变量，考虑到变量<code>type</code>装修状况是一个能影响二手房价的重要因素，虽然其缺失值相对较多，但是我们仍不采用删除变量的操作。</p>
+<p><img src="/2018/08/29/重庆二手房价影响因素/queshi.png" alt="queshi">从中可以了解到<code>bulid_year</code>缺失323个，<code>elector</code>缺失522个，<code>type</code>缺失967个。<code>build_year</code>和<code>elector</code>的缺失值较少，所以不打算删除这两个变量，考虑到变量<code>type</code>装修状况是一个能影响二手房价的重要因素，虽然其缺失值相对较多，但是我们仍不采用删除变量的操作。</p>
 <p>下面用<code>R</code>进行缺失值处理：</p>
 <ul>
 <li>对<code>build_year</code>的缺失值用随机森林随机插补的方法(mice)，不考虑跟建筑年份无关的变量：<code>id</code>,<code>bedroom</code>,<code>living_room</code>,<code>elector</code>(含缺失值),<code>price</code>(因变量),<code>type</code>(含缺失值);</li>
@@ -574,6 +574,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/" rel="prev" title="kaggle泰坦尼克号生存预测-随机森林">
+                kaggle泰坦尼克号生存预测-随机森林 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -656,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
