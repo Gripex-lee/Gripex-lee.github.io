@@ -127,7 +127,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/model.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/import.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/bijiao.png">
-<meta property="og:updated_time" content="2018-09-25T11:53:03.754Z">
+<meta property="og:updated_time" content="2018-09-26T02:44:23.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kaggle泰坦尼克号生存预测-随机森林">
 <meta name="twitter:description" content="泰坦尼克号（RMS Titanic）的沉没是历史上最被人熟知的一次沉船事件。1912年4月15日，在她的处女航中，泰坦尼克号在与冰山相撞后沉没，在2224名乘客和机组人员中造成1502人死亡。这场耸人听闻的悲剧震惊了国际社会，并导致了更好的船舶安全规定。造成海难失事的原因之一是乘客和机组人员没有足够的救生艇。尽管幸存下沉有一些运气因素，但有些人比其他人更容易生存，比如女人，孩子和上流社会。这个实验">
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,271
+                  2,534
                 </span>
               
 
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -407,50 +407,54 @@
         <p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/titanic.jpg" alt="titanic"><br>泰坦尼克号（RMS Titanic）的沉没是历史上最被人熟知的一次沉船事件。1912年4月15日，在她的处女航中，泰坦尼克号在与冰山相撞后沉没，在2224名乘客和机组人员中造成1502人死亡。这场耸人听闻的悲剧震惊了国际社会，并导致了更好的船舶安全规定。造成海难失事的原因之一是乘客和机组人员没有足够的救生艇。尽管幸存下沉有一些运气因素，但有些人比其他人更容易生存，比如女人，孩子和上流社会。<br><strong>这个实验将进行乘客的存活分析，来预测哪些乘客幸免于难。</strong><br><a id="more"></a></p>
 <h2 id="原始数据"><a href="#原始数据" class="headerlink" title="原始数据"></a>原始数据</h2><p>kaggle的原始数据提供如下：</p>
 <ul>
-<li>train.csv（训练集的部分数据<strong>1:891</strong>）<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/train.png" alt="train"></li>
-<li>test.csv（测试集的部分数据<strong>892:1309</strong>）<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/test.png" alt="test"></li>
-<li>gender_submission.csv（真实结果的部分数据）<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/submission.png" alt="submission"></li>
+<li>train.csv（训练集<strong>1:891</strong>）<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/train.png" alt="train"></li>
+<li>test.csv（测试集<strong>892:1309</strong>）<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/test.png" alt="test"></li>
+<li>gender_submission.csv(真实结果)<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/submission.png" alt="submission"></li>
 </ul>
 <p>总共含1309条数据，每一行数据代表一个乘客的信息，因变量<code>Survived</code>表示是否幸存（<code>1</code>表示幸存，<code>0</code>表示没有）。除了因变量外，还考虑下面的解释变量，这些变量都能直接或间接地影响乘客能否幸存：  </p>
 <ul>
 <li><strong>社会经济地位</strong> (Pclass)：1=上，2=中，3=下；社会经济地位越高，受重视程度越高，直观上越容易得到救援；</li>
-<li><strong>姓名</strong> (Name)：姓名决定了氏族，一定程度上反映了乘客的社会经济地位；</li>
-<li><strong>性别</strong> (Sex)：女士优先这个思想也决定了很多东西，<code>male</code>表示男性，<code>female</code>表示女性；</li>
-<li><strong>年龄</strong> (Age)：尊老爱幼也是一种美德；</li>
-<li><strong>兄弟姐妹及配偶</strong> (SibSp)、<strong>长辈和子女</strong> (Parch)：该指标为计数指标，反映家庭人数的多少，单人出游计为<code>0</code>；</li>
-<li><strong>票码</strong> (Ticket)：船票信息反映了你在船上的位置；</li>
+<li><strong>姓名</strong> (Name)：姓名决定了家族，一定程度上反映了乘客的社会地位；</li>
+<li><strong>性别</strong> (Sex)：女士优先这个思想也决定了女性更容易得到关注，这里<code>male</code>表示男性，<code>female</code>表示女性；</li>
+<li><strong>年龄</strong> (Age)：尊老爱幼也是一种美德，我们这里研究孩子和成人在事件(是否幸存)上的影响；</li>
+<li><strong>兄弟姐妹及配偶</strong> (SibSp)、<strong>长辈和子女</strong> (Parch)：该指标为计数指标，联合反映家庭人数的多少，单人出游计为<code>0</code>；</li>
+<li><strong>票码</strong> (Ticket)：该指标反映了包括你在船上的位置信息等；</li>
 <li><strong>票价</strong> (Fare)：票价决定了在船上的位置（有钱坐头等舱类似的情况）；</li>
 <li><strong>客舱号</strong> (Cabin)：该指标类似票价可在一定程度上反映经济实力，其次遇难时船体的断裂点和该指标有直接联系；</li>
-<li><strong>登船港口</strong> (Embarked)：C=瑟堡，Q=皇后镇，S=南安普敦.</li>
+<li><strong>登船港口</strong> (Embarked)：该指标可以将乘客分类，使预测效果更好，这里C=瑟堡，Q=皇后镇，S=南安普敦.</li>
 </ul>
-<h2 id="数据处理加工"><a href="#数据处理加工" class="headerlink" title="数据处理加工"></a>数据处理加工</h2><h3 id="需要使用的包"><a href="#需要使用的包" class="headerlink" title="需要使用的包"></a>需要使用的包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">library(&apos;ggplot2&apos;) # visualization</span><br><span class="line">library(&apos;ggthemes&apos;) # visualization</span><br><span class="line">library(&apos;scales&apos;) # visualization</span><br><span class="line">library(&apos;dplyr&apos;) # data manipulation</span><br><span class="line">library(&apos;mice&apos;) # imputation</span><br><span class="line">library(&apos;randomForest&apos;)</span><br></pre></td></tr></table></figure>
-<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train &lt;- read.csv(&quot;train.csv&quot;)</span><br><span class="line">test &lt;- read.csv(&quot;test.csv&quot;)</span><br><span class="line">fault&lt;- read.csv(&quot;gender_submission.csv&quot;)</span><br><span class="line">full&lt;-bind_rows(train,test) # 合并数据</span><br></pre></td></tr></table></figure>
+<h2 id="数据处理加工"><a href="#数据处理加工" class="headerlink" title="数据处理加工"></a>数据处理加工</h2><h3 id="需要使用的包"><a href="#需要使用的包" class="headerlink" title="需要使用的包"></a>需要使用的包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">library(&apos;ggplot2&apos;)</span><br><span class="line">library(&apos;ggthemes&apos;) </span><br><span class="line">library(&apos;scales&apos;) </span><br><span class="line">library(&apos;dplyr&apos;) </span><br><span class="line">library(&apos;mice&apos;) </span><br><span class="line">library(&apos;randomForest&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train &lt;- read.csv(&quot;train.csv&quot;)</span><br><span class="line">test &lt;- read.csv(&quot;test.csv&quot;)</span><br><span class="line">fault&lt;- read.csv(&quot;gender_submission.csv&quot;)</span><br><span class="line">full&lt;-bind_rows(train,test)</span><br></pre></td></tr></table></figure>
 <h3 id="变量处理"><a href="#变量处理" class="headerlink" title="变量处理"></a>变量处理</h3><p>看过泰坦尼克号电影的都知道，船长让女人和孩子优先上救生船，所以这里先对女性特征做一些简单处理：</p>
 <ul>
-<li><strong>构造新的分类变量：尊称</strong><code>Title</code><br>从名字中可以提取前缀类似Miss,Dr…这些前缀可以反映该乘客的社会角色，从而将乘客更好的分类。</li>
+<li><strong>构造新的分类变量：称呼（尊称）</strong><code>Title</code><br>从名字中可以提取前缀类似Miss,Dr…这些前缀可以反映该乘客的社会角色，从而将乘客更好的分类。</li>
 </ul>
 <div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">full$Title &lt;- gsub(&apos;(.*, )|(\\..*)&apos;,&apos;&apos;,full$Name)#正则替换</span><br><span class="line">table(full$Sex,full$Title)</span><br><span class="line"></span><br><span class="line"># 稀有前缀(数量少的合并)</span><br><span class="line">rare_title &lt;- c(&apos;Dona&apos;, &apos;Lady&apos;, &apos;the Countess&apos;,&apos;Capt&apos;, &apos;Col&apos;, &apos;Don&apos;, </span><br><span class="line">                &apos;Dr&apos;, &apos;Major&apos;, &apos;Rev&apos;, &apos;Sir&apos;, &apos;Jonkheer&apos;)</span><br><span class="line">full$Title[full$Title == &apos;Mlle&apos;]        &lt;- &apos;Miss&apos; </span><br><span class="line">full$Title[full$Title == &apos;Ms&apos;]          &lt;- &apos;Miss&apos;</span><br><span class="line">full$Title[full$Title == &apos;Mme&apos;]         &lt;- &apos;Mrs&apos; </span><br><span class="line">full$Title[full$Title %in% rare_title]  &lt;- &apos;Rare Title&apos;</span><br><span class="line"></span><br><span class="line"># 再次查看分类</span><br><span class="line">table(full$Sex,full$Title)</span><br><span class="line"># 从乘客姓名中取名</span><br><span class="line">full$Surname &lt;- sapply(full$Name,  </span><br><span class="line">                      function(x) strsplit(x, split = &apos;[,.]&apos;)[[1]][1])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">full$Title &lt;- gsub(&apos;(.*, )|(\\..*)&apos;,&apos;&apos;,full$Name)#正则替换</span><br><span class="line">table(full$Sex,full$Title)</span><br><span class="line"></span><br><span class="line"># 稀有前缀(数量少的合并)</span><br><span class="line">rare_title &lt;- c(&apos;Dona&apos;, &apos;Lady&apos;, &apos;the Countess&apos;,&apos;Capt&apos;, &apos;Col&apos;, &apos;Don&apos;, </span><br><span class="line">                &apos;Dr&apos;, &apos;Major&apos;, &apos;Rev&apos;, &apos;Sir&apos;, &apos;Jonkheer&apos;)</span><br><span class="line">full$Title[full$Title == &apos;Mlle&apos;]        &lt;- &apos;Miss&apos; </span><br><span class="line">full$Title[full$Title == &apos;Ms&apos;]          &lt;- &apos;Miss&apos;</span><br><span class="line">full$Title[full$Title == &apos;Mme&apos;]         &lt;- &apos;Mrs&apos; </span><br><span class="line">full$Title[full$Title %in% rare_title]  &lt;- &apos;Rare Title&apos;</span><br><span class="line"></span><br><span class="line">table(full$Sex,full$Title)</span><br><span class="line"># 从乘客姓名中取名</span><br><span class="line">full$Surname &lt;- sapply(full$Name,  </span><br><span class="line">                      function(x) strsplit(x, split = &apos;[,.]&apos;)[[1]][1])</span><br></pre></td></tr></table></figure>
 
 </div></div>
 <p>下面是处理后的分类情况：<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/Title.png" alt="Title"></p>
 <ul>
-<li><strong>构造新变量:家庭大小</strong><code>Fsize</code><br>在这里我们将兄弟姐妹及配偶，长辈和子女的个数综合起来构造新变量，代表家庭大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 构建新变量：家庭大小 ####</span><br><span class="line">full$Fsize &lt;- full$SibSp + full$Parch + 1</span><br><span class="line">full$Family &lt;- paste(full$Surname, full$Fsize, sep=&apos;_&apos;)</span><br></pre></td></tr></table></figure>
+<li><strong>构造新变量:家庭大小</strong><code>Fsize</code><br>在这里我们将兄弟姐妹及配偶，长辈和子女的个数综合起来构造新变量，代表家庭大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">full$Fsize &lt;- full$SibSp + full$Parch + 1</span><br><span class="line">full$Family &lt;- paste(full$Surname, full$Fsize, sep=&apos;_&apos;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>下图为家庭人数对生存情况的影响：<br><div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 查看家庭人数对生存情况的影响</span><br><span class="line">ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +</span><br><span class="line">  geom_bar(stat=&apos;count&apos;, position=&apos;dodge&apos;) +</span><br><span class="line">  scale_x_continuous(breaks=c(1:11)) +</span><br><span class="line">  labs(x = &apos;Family Size&apos;) +</span><br><span class="line">  theme_few()</span><br></pre></td></tr></table></figure>
 
-</div></div><br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/family.png" alt="family"></p>
+</div></div><br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/family.png" alt="family"><br>可以得到结论：</p>
 <ul>
-<li><p>重新定义成分类变量<code>FsizeD</code>：1个人为<code>singleton</code>,2-4个人为<code>small</code>,5人及以上为<code>large</code>。</p>
+<li>在总体上，女性幸存者多于男性；</li>
+<li>随着家庭人数的增加，女性幸存者和男性幸存者的比例有先降后增的趋势。</li>
+</ul>
+<ul>
+<li><p>重新定义成分类变量<code>FsizeD</code>：1个人为<code>singleton</code>,2-4个人为<code>small</code>,5人及以上为<code>large</code>，并做马赛克图。</p>
 <div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">full$FsizeD[full$Fsize==1] &lt;-&apos;singleton&apos;</span><br><span class="line">full$FsizeD[full$Fsize&lt;5 &amp; full$Fsize&gt;1] &lt;-&apos;small&apos;</span><br><span class="line">full$FsizeD[full$Fsize&gt;4] &lt;- &apos;large&apos;</span><br><span class="line"></span><br><span class="line">mosaicplot(table(full$FsizeD,full$Survived),main=&apos;Family Size by Survival&apos;,shade = TRUE)</span><br></pre></td></tr></table></figure>
 
 </div></div>
-<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/masaike.jpg" alt="马赛克图"><br>马赛克图(表明家庭规模对生存有惩罚效应).</p>
+<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/masaike.jpg" alt="马赛克图"><br>马赛克图表明：家庭规模对生存有惩罚效应.</p>
 </li>
-<li><p><code>Cabin</code>变量的缺失数据太多，暂时不做处理，在后面也不纳入分析</p>
+<li><p>由于<code>Cabin</code>变量的缺失数据太多，暂时不做处理，在后面也不纳入分析</p>
 </li>
 </ul>
 <h3 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h3><ul>
@@ -466,7 +470,7 @@
 </div></div>
 <p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/avarage.png" alt="avarage"><br>我们根据票价和登船港口确定来填补缺失值，<code>Id</code>为<code>62</code>和<code>830</code>的乘客缺少登船港口数据，其票价均为<code>80$</code>，观察票价和登船港口的情况发现：均值所在为<code>80</code>的大概为<code>C港</code>，故将缺失值填补为<code>C</code>。</p>
 </li>
-<li><p><code>Fare</code>缺失值处理<br>该变量包含一个缺失值，该缺失值情况如下：<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/id1044.png" alt="Fare缺失数据"><br>这是一个<code>S港</code>的<code>三等</code>乘客，在这里用<code>S港</code> <code>三等</code>乘客的票价<code>中位数</code>代替缺失值，票价替换为<code>8.05$</code>。</p>
+<li><p><code>Fare</code>缺失值处理<br>该变量包含一个缺失值，该缺失值情况如下：<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/id1044.png" alt="Fare缺失数据"><br>这是一个<code>S港</code>的<code>三等</code> <code>男性</code>乘客，在这里用<code>S港</code> <code>三等</code>乘客的票价<code>中位数</code>代替缺失值，票价替换为<code>8.05$</code>。</p>
 <div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ggplot(full[full$Pclass == &apos;3&apos; &amp; full$Embarked == &apos;S&apos; &amp; full$PassengerId!=1044, ], </span><br><span class="line">  aes(x = Fare)) +</span><br><span class="line">  geom_density(fill = &apos;#99d6ff&apos;, alpha=0.4) + </span><br><span class="line">  geom_vline(aes(xintercept=median(Fare, na.rm=T)),</span><br><span class="line">    colour=&apos;red&apos;, linetype=&apos;dashed&apos;, lwd=1) +</span><br><span class="line">  scale_x_continuous(labels=dollar_format()) +</span><br><span class="line">  theme_few()</span><br><span class="line"># 中位数代替</span><br><span class="line">full$Fare[1044] &lt;- median(full[full$Pclass == &apos;3&apos; &amp; full$Embarked == &apos;S&apos;,]$Fare,na.rm = TRUE)</span><br></pre></td></tr></table></figure>
 
@@ -485,8 +489,14 @@
 <p>将得到的结果与乘客年龄的原始分布进行比较，以确保没有任何完全错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">par(mfrow=c(1,2)) #画布一分为二</span><br><span class="line">hist(full$Age, freq=F, main=&apos;Age: Original Data&apos;, </span><br><span class="line">  col=&apos;darkgreen&apos;, ylim=c(0,0.04))</span><br><span class="line">hist(mice_output$Age, freq=F, main=&apos;Age: MICE Output&apos;, </span><br><span class="line">  col=&apos;lightgreen&apos;, ylim=c(0,0.04))</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/Age.png" alt="age"><br>由图可知填补后的分布和之前的分布几乎一样，表明填补效果较好。</p>
 <h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><p>先查看年龄和生存的关系（性别分组）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + </span><br><span class="line">  geom_histogram() + </span><br><span class="line">  facet_grid(.~Sex) + </span><br><span class="line">  theme_few()</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/tezheng.png" alt="sheng_cun_guan_xi"></p>
-<p>在这里特征工程的任务主要是创建新的分类因变量————孩子和母亲。<br>孩子标准如下：</p>
+<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/tezheng.png" alt="sheng_cun_guan_xi"><br>由图：</p>
+<ul>
+<li>男性的数量多于女性；</li>
+<li>女性幸存者比率要远高于男性；</li>
+<li>无论男性还是女性，18岁以下孩子的生存率是大致相同的；</li>
+</ul>
+<p>这表明孩子和女士确实在灾难中得到了较多的帮助。</p>
+<p>下面进行的特征工程的任务主要是创建新的分类因变量————孩子和母亲。<br>孩子标准如下：</p>
 <ul>
 <li>大于0岁小于18岁<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">full$Child[full$Age &lt; 18] &lt;- &apos;Child&apos;</span><br><span class="line">full$Child[full$Age &gt;= 18] &lt;- &apos;Adult&apos;</span><br><span class="line">table(full$Child,full$Survived)</span><br></pre></td></tr></table></figure>
 </li>
@@ -500,7 +510,7 @@
 </li>
 </ul>
 <p>最后将变量转为因子型完成建模前的数据处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">full$Child &lt;- factor(full$Child)</span><br><span class="line">full$Mother &lt;- factor(full$Mother)</span><br><span class="line">par(mfrow=c(1,1))</span><br><span class="line">md.pattern(full)</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/queshi2.jpg" alt="queshi2"><br>此时除了需要预测的<code>418</code>个值以外没有其他缺失值。</p>
+<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/queshi2.jpg" alt="queshi2"><br>此时除了需要预测的<code>418</code>个值和不纳入考虑的变量<code>Deck</code>以外没有其他缺失值。</p>
 <h2 id="随机森林模型-randomForest"><a href="#随机森林模型-randomForest" class="headerlink" title="随机森林模型(randomForest)"></a>随机森林模型(randomForest)</h2><h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><ul>
 <li><p>划分训练集和测试集：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train &lt;- full[1:891,]</span><br><span class="line">test &lt;- full[892:1309,]</span><br></pre></td></tr></table></figure>
@@ -512,12 +522,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rf_model &lt;- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + </span><br><span class="line">                                            Fare + Embarked + Title + </span><br><span class="line">                                            FsizeD + Child + Mother,</span><br><span class="line">                                            data = train)</span><br><span class="line">rf_model</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>选取除<strong>ID</strong><code>PassengerId</code>,<strong>姓名</strong><code>Name</code>,<strong>票码</strong><code>Ticket</code>,<strong>客舱号</strong><code>Cabin</code>,<strong>姓</strong><code>Surname</code>以外的变量进行随机森林的建模，结果如下：<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/model.png" alt="model"><br>默认<code>500</code>棵随机树在训练集上表现出<code>16.72%</code>的估计错误率，意味着有八成的正确率。</p>
-<h3 id="变量重要性"><a href="#变量重要性" class="headerlink" title="变量重要性"></a>变量重要性</h3><div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
+<p>选取除<strong>ID</strong><code>PassengerId</code>,<strong>姓名</strong><code>Name</code>,<strong>票码</strong><code>Ticket</code>,<strong>客舱号</strong><code>Cabin</code>,<strong>姓</strong><code>Surname</code>以外的变量进行随机森林的建模，结果如下：<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/model.png" alt="model"><br>默认<code>500</code>棵随机树在训练集上表现出<code>16.72%</code>的估计错误率，意味着有八成的正确率；混淆矩阵表明幸存者被错误估计的比例为<code>28.07%</code>，未幸存者被错误估计的比例为<code>9.65%</code>。</p>
+<h3 id="变量重要性"><a href="#变量重要性" class="headerlink" title="变量重要性"></a>变量重要性</h3><p>下面我们查看变量对预测结果的重要程度：<br><div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">importance    &lt;- importance(rf_model)</span><br><span class="line">varImportance &lt;- data.frame(Variables = row.names(importance), </span><br><span class="line">                            Importance = round(importance[ ,&apos;MeanDecreaseGini&apos;],2))</span><br><span class="line">rankImportance &lt;- varImportance %&gt;%</span><br><span class="line">  mutate(Rank = dense_rank(desc(Importance)))</span><br><span class="line"></span><br><span class="line">ggplot(rankImportance, aes(x = reorder(Variables, Importance), </span><br><span class="line">    y = Importance, fill = Importance)) +</span><br><span class="line">  #条形</span><br><span class="line">  geom_bar(stat=&apos;identity&apos;) +</span><br><span class="line">  #添加文字</span><br><span class="line">  geom_text(aes(x = Variables, y = 0.5, label = Rank),</span><br><span class="line">    hjust=0, vjust=0.55, size = 4, colour = &apos;red&apos;) +</span><br><span class="line">  labs(x = &apos;Variables&apos;) +</span><br><span class="line">  coord_flip() + </span><br><span class="line">  theme_few()</span><br></pre></td></tr></table></figure>
 
-</div></div>
-<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/import.png" alt="importance"><br>人为构造的变量<code>Title</code>在预测变量中具有最高的相对重要性。</p>
+</div></div><br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/import.png" alt="importance"><br>人为构造的变量<code>Title</code>在预测变量中具有最高的相对重要性，其后依次是票价、性别、年龄、社会经济地位……</p>
+<p>人为构造的母亲分类从结果看并没有那么理想，可能是家人外出游玩，母亲需要留在家中的缘故。</p>
 <h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prediction &lt;- predict(rf_model, test)</span><br><span class="line">solution &lt;- data.frame(PassengerID = test$PassengerId, Survived = prediction)</span><br><span class="line">total &lt;- data.frame(fault$PassengerId,fault$Survived,solution$Survived)</span><br></pre></td></tr></table></figure>
 <p>接着将预测结果和真实结果（保存在gender_submission.csv中）进行比较，得出正确率。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">library(gmodels)</span><br><span class="line">CrossTable(fault$Survived,solution$Survived,</span><br><span class="line">           prop.chisq = FALSE,prop.c = FALSE,prop.r = FALSE,</span><br><span class="line">           dnn = c(&apos;真实值&apos;,&apos;预测值&apos;))</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/bijiao.png" alt="compare"><br>得到的结论如下：</p>
