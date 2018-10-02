@@ -127,7 +127,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/model.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/import.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/bijiao.png">
-<meta property="og:updated_time" content="2018-09-26T02:44:23.462Z">
+<meta property="og:updated_time" content="2018-10-02T00:40:43.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kaggle泰坦尼克号生存预测-随机森林">
 <meta name="twitter:description" content="泰坦尼克号（RMS Titanic）的沉没是历史上最被人熟知的一次沉船事件。1912年4月15日，在她的处女航中，泰坦尼克号在与冰山相撞后沉没，在2224名乘客和机组人员中造成1502人死亡。这场耸人听闻的悲剧震惊了国际社会，并导致了更好的船舶安全规定。造成海难失事的原因之一是乘客和机组人员没有足够的救生艇。尽管幸存下沉有一些运气因素，但有些人比其他人更容易生存，比如女人，孩子和上流社会。这个实验">
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,534
+                  2,535
                 </span>
               
 
@@ -468,7 +468,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">full[c(62,830),c(&apos;Embarked&apos;,&apos;Fare&apos;)]</span><br><span class="line"></span><br><span class="line">embark_fare &lt;- full %&gt;%</span><br><span class="line">  filter(PassengerId != 62 &amp; PassengerId != 830)</span><br><span class="line"># 绘图</span><br><span class="line">ggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +</span><br><span class="line">  geom_boxplot() +</span><br><span class="line">  geom_hline(aes(yintercept=80), </span><br><span class="line">    colour=&apos;red&apos;, linetype=&apos;dashed&apos;, lwd=1) +</span><br><span class="line">  scale_y_continuous(labels=dollar_format()) +</span><br><span class="line">  theme_few()</span><br><span class="line"> </span><br><span class="line">full$Embarked[c(62,830)] &lt;- &apos;C&apos; #填补缺失值</span><br></pre></td></tr></table></figure>
 
 </div></div>
-<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/avarage.png" alt="avarage"><br>我们根据票价和登船港口确定来填补缺失值，<code>Id</code>为<code>62</code>和<code>830</code>的乘客缺少登船港口数据，其票价均为<code>80$</code>，观察票价和登船港口的情况发现：均值所在为<code>80</code>的大概为<code>C港</code>，故将缺失值填补为<code>C</code>。</p>
+<p><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/avarage.png" alt="avarage"><br>我们根据票价和登船港口确定来填补缺失值，<code>Id</code>为<code>62</code>和<code>830</code>的乘客缺少登船港口数据，其票价均为<code>80$</code>，观察票价和登船港口的情况发现：均值所在为<code>80$</code>的大概为<code>C港</code>，故将缺失值填补为<code>C</code>。</p>
 </li>
 <li><p><code>Fare</code>缺失值处理<br>该变量包含一个缺失值，该缺失值情况如下：<br><img src="/2018/09/25/kaggle泰坦尼克号生存预测-随机森林/id1044.png" alt="Fare缺失数据"><br>这是一个<code>S港</code>的<code>三等</code> <code>男性</code>乘客，在这里用<code>S港</code> <code>三等</code>乘客的票价<code>中位数</code>代替缺失值，票价替换为<code>8.05$</code>。</p>
 <div><div class="fold_hider"><div class="close hider_title">-------------------点击显/隐代码</div></div><div class="fold">
